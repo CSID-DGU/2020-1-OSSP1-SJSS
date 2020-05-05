@@ -15,7 +15,7 @@ using tensorflow c api :
 ### 관련 오픈소스
 https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
 
-### 프로젝트 내용
+## 프로젝트 내용
 
 #### 3.시스템 목표 및 세부사항
 ##### 카메라를 통해 인식한 사물에 대한 반응 작업에 대한 코드를 작성할 수 있음
