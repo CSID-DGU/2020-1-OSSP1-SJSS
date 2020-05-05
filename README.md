@@ -56,14 +56,14 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
  -  vs (visual studio) 
  -  opencv (영상 인식)
  
-### 5. 관련 기술 및 시장 제품
+#### 5. 관련 기술 및 시장 제품
  
-#### 5-1. 관련 기술
+##### 5-1. 관련 기술
 - 머신 러닝
 - Object Detection(사물 인식)
 - 블록 코딩 
  
-#### 5-2. 시장 제품
+##### 5-2. 시장 제품
 - Scratch : 교육 플랫폼
 - Scratch X → 아두이노와 연결 가능
 - Entry(엔트리) 
