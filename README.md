@@ -17,6 +17,13 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
 
 ## 프로젝트 내용
 
+#### 2. 주제 선정 이유
+- Scratch 프로그램은 어렸을 때 한 번쯤 다 사용해 본 경험이 있음
+- Scratch api가 공개 되어있음
+- object detection 관련 오픈 소스가 여러 가지 언어로 배포 되어있음
+- 팀원이 모두 machine learning에 관심이 있음
+- Scratch와 아두이노를 연결했을 때 시각적으로 결과물을 보임으로써 작동 원리를 깊게 이해 할 수 있음
+
 #### 3.시스템 목표 및 세부사항
 ##### 카메라를 통해 인식한 사물에 대한 반응 작업에 대한 코드를 작성할 수 있음
 - 편리성 제공
@@ -48,3 +55,15 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
  -  ROS 
  -  vs (visual studio) 
  -  opencv (영상 인식)
+ 
+### 5. 관련 기술 및 시장 제품
+ 
+#### 5-1. 관련 기술
+- 머신 러닝
+- Object Detection(사물 인식)
+- 블록 코딩 
+ 
+#### 5-2. 시장 제품
+- Scratch : 교육 플랫폼
+- Scratch X → 아두이노와 연결 가능
+- Entry(엔트리) 
