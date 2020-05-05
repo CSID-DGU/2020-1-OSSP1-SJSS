@@ -27,3 +27,24 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
 	: 텐서플로우를 이용, 사물인식에 대한 정확도 향상
 - 아두이노와 연결 / 아두이노 작동
 	: 해당 코드에 알맞은 작동
+
+#### 4. 개발범위 및 개발환경
+##### 4-1. 개발범위
+
+ - object detection 기능
+        : 객체를 인식하여 프로그램이 객체에 따라서 상황에 맞는 코드가 실행되게 함.
+ - library 추가 기능
+        : 사용자가 원할 때, 라이브러리를 추가할 수 있도록 함.
+ - scratch 확장 기능
+        : 기존의 스크래치 프로그램에 vision에 관련한 기능을 추가하여 사용자들이 다양한 코드를 생성할 수 있도록 함.
+
+##### 4-2. 개발환경
+###### 라이브러리 확장
+ -  파이어폭스 웹
+ -  스크래치 프로그램
+ -  js파일로 라이브러리 확장
+ -  sbx파일로 프로젝트 생성 후 js파일 실행
+###### Object detection
+ -  ROS 
+ -  vs (visual studio) 
+ -  opencv (영상 인식)
