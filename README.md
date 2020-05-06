@@ -74,5 +74,5 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
 #### 7. SWOT 분석
 ![swot](https://user-images.githubusercontent.com/62641007/81142317-531f6480-8faa-11ea-9b18-1aa6e5928ae4.PNG)
 
-#### 8. 
+#### 8. 진행 계획
 ![plan](https://user-images.githubusercontent.com/62641007/81142320-54e92800-8faa-11ea-879e-25c6abceceb8.PNG)
