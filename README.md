@@ -68,3 +68,11 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
 - Entry(엔트리) 
 
 #### 6. 시스템 형상
+![ossp1](https://user-images.githubusercontent.com/62641007/81142308-4d298380-8faa-11ea-8cf2-efdd6f14563e.PNG) 
+![ossp2](https://user-images.githubusercontent.com/62641007/81142314-50247400-8faa-11ea-96e9-c1426baedc3f.PNG)
+
+#### 7. SWOT 분석
+![swot](https://user-images.githubusercontent.com/62641007/81142317-531f6480-8faa-11ea-9b18-1aa6e5928ae4.PNG)
+
+#### 8. 
+![plan](https://user-images.githubusercontent.com/62641007/81142320-54e92800-8faa-11ea-879e-25c6abceceb8.PNG)
