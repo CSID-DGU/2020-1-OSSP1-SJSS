@@ -17,6 +17,9 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
 
 ## 프로젝트 내용
 
+#### 1. 주제
+object detection을 활용한 Scratch X 라이브러리 생성
+
 #### 2. 주제 선정 이유
 - Scratch 프로그램은 어렸을 때 한 번쯤 다 사용해 본 경험이 있음
 - Scratch api가 공개 되어있음
