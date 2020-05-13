@@ -21,11 +21,12 @@ https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
 object detection을 활용한 Scratch X 라이브러리 생성
 
 #### 2. 주제 선정 이유
-- 불록 코당은 어렸을 때 한 번쯤 다 사용해 본 경험이 있음
-- Scratch api가 공개 되어있음
+- 블록 코딩은 어렸을 때 한 번쯤 다 사용해 본 경험이 있음(ex. scratch)
+- 블록 코딩에 대한 api가 공개 되어있음
 - object detection 관련 오픈 소스가 여러 가지 언어로 배포 되어있음
 - 팀원이 모두 machine learning에 관심이 있음
-- Scratch와 아두이노를 연결했을 때 시각적으로 결과물을 보임으로써 작동 원리를 깊게 이해 할 수 있음
+- 블록 코딩과 아두이노를 연결했을 때 시각적으로 결과물을 보임으로써 작동 원리를 깊게 이해 할 수 있음
+- object detection을 활용하여 사물을 인식하고 저장된 데이터를 이용해 자율 주행 자동차 등 여러 프로젝트를 수행할 수 있음
 
 #### 3.시스템 목표 및 세부사항
 ##### 카메라를 통해 인식한 사물에 대한 반응 작업에 대한 코드를 작성할 수 있음
@@ -69,6 +70,8 @@ object detection을 활용한 Scratch X 라이브러리 생성
 - Scratch : 교육 플랫폼
 - Scratch X → 아두이노와 연결 가능
 - Entry(엔트리) 
+- Blockly
+- mblock
 
 #### 6. 시스템 형상
 ![ossp1](https://user-images.githubusercontent.com/62641007/81142308-4d298380-8faa-11ea-8cf2-efdd6f14563e.PNG) 
