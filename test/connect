@@ -1,0 +1,13 @@
+<html>
+<head>
+<script language="javascript">
+ function connect() {
+  var shell = new ActiveXObject("WScript.shell");
+  shell.run("test.bat", 1, true);  // test.bat에 object detection을 하기 위한 명령어 저장
+ }
+</script>
+</head>
+<body>
+ <a href="javascript:connect()">CMD</a></br>
+</body>
+</html>
