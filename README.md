@@ -14,8 +14,10 @@ using tensorflow c api :
 
 ## 관련 오픈소스
 https://github.com/zzh8829/yolov3-tf2
-https://github.com/BlocklyDuino/BlocklyDuino
+
 http://easycoding.tn/bde/demos/code/
+
+https://github.com/BlocklyDuino/BlocklyDuino
 
 ## 프로젝트 내용
 
