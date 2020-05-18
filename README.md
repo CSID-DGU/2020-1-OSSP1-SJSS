@@ -13,7 +13,9 @@ using tensorflow c api :
 기존의 텍스트 코딩과 달리 스크립트를 블록 맞추듯이 연결하여 코딩을 하는 방식으로 게임이나 애니메이션 등을 만들 수 있고, 비전공자도 쉽게 사용할 수 있는 웹 아두이노 블록 코딩을 설계하여 object detection 기술을 접합한 라이브러리를 생성한다.
 
 ## 관련 오픈소스
-https://github.com/mohammedari/tensorflow_object_detector_ros/tree/master/src
+https://github.com/zzh8829/yolov3-tf2
+https://github.com/BlocklyDuino/BlocklyDuino
+http://easycoding.tn/bde/demos/code/
 
 ## 프로젝트 내용
 
