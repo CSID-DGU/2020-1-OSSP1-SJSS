@@ -78,4 +78,4 @@ object detection 라이브러리를 추가한 웹 아두이노 블록 코딩 설
 ![캡처](https://user-images.githubusercontent.com/62641007/82196510-bdce8980-9934-11ea-8844-17666c3d1c11.PNG)
 
 #### 8. 진행 계획
-![plan](https://user-images.githubusercontent.com/62641007/81142320-54e92800-8faa-11ea-879e-25c6abceceb8.PNG)
+![plan](https://user-images.githubusercontent.com/62641007/82196787-1dc53000-9935-11ea-99bf-d5e61807b668.PNG)
