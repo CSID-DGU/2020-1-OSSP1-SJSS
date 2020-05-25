@@ -59,21 +59,23 @@ Blockly.Blocks['grove_ultrasonic_ranger'] = {
   }
 };
 
-Blockly.Blocks['grove_motor_shield'] = {
+Blockly.Blocks['grove_motor_shield'] = { //모터 작동 속도와 방향 제어 모듈
   helpUrl: 'http://www.seeedstudio.com/wiki/Motor_Shield',
   init: function() {
-    this.setColour(150);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.VAR_Motor)
+    this.setColour(150); //블록 색상
+    this.appendDummyInput() 
+        .appendField(Blockly.Msg.VAR_Motor) // 모터 값 초기화
         .appendField(new Blockly.FieldImage("http://www.seeedstudio.com/wiki/images/thumb/4/4d/Smotoshield2.jpg/400px-Smotoshield2.jpg", 64, 64))
+        //motor 블록 dropdown 메뉴 (stop, forward, right, left, backward)
         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.Stop, "stop"], [Blockly.Msg.Forward, "forward"], [Blockly.Msg.Right, "right"], [Blockly.Msg.Left, "left"], [Blockly.Msg.Backward, "backward"]]), "DIRECTION");
-    /*this.appendValueInput("SPEED", 'Number')
+    /*this.appendValueInput("SPEED", 'Number') 
         .setCheck('Number')
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Speed");*/
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip('Drive two brushed DC motors');
+    //top, bottom 모두 connection 갖는 블록
+    this.setPreviousStatement(true, null); 
+    this.setNextStatement(true, null); 
+    this.setTooltip('Drive two brushed DC motors'); 
   }
 };
 
