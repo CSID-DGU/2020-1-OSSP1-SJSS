@@ -32,6 +32,7 @@ var MSG = {
   catLists: "Lists",
   catColour: "Colour",
   catVariables: "Variables",
+  catObjectVar: "Object Variables", //catObjectVar -> object variables로 카테고리 명 설정
   catFunctions: "Functions",
   listVariable: "list",
   textVariable: "text",
