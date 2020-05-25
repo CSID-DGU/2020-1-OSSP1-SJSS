@@ -86,7 +86,8 @@ Blockly.Blocks['base_delayms'] = {
     this.appendValueInput("DELAY_TIME", 'Number')
         .appendField(Blockly.Msg.DelayMs)
         .setCheck('Number');
-    this.setInputsInline(true);
+    this.setInputsInline(true); //inline 형태로 정렬
+    //top, bottom 모두 connection 갖는 블록
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Delay specific time in Ms');
