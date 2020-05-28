@@ -80,10 +80,11 @@ def broadcast_iou(box_1, box_2):
     # box_2: (N, (x1, y1, x2, y2))
 
     # broadcast boxes
-    box_1 = tf.expand_dims(box_1, -2)
-    box_2 = tf.expand_dims(box_2, 0)
+    box_1 = tf.expand_dims(box_1, -2)#차원 추가하여 확장
+    box_2 = tf.expand_dims(box_2, 0)#첫 번째 차원을 추가하여 확장함.
     # new_shape: (..., N, (x1, y1, x2, y2))
     new_shape = tf.broadcast_dynamic_shape(tf.shape(box_1), tf.shape(box_2))
+    #tf.shape(box_1)과 tf.shape(box_2)의 tensor에 적용된 broadcasting된 op의 결과 모양인 tensor를 계산한다.
     box_1 = tf.broadcast_to(box_1, new_shape)
     box_2 = tf.broadcast_to(box_2, new_shape)
 
