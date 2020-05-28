@@ -462,3 +462,6 @@ Blockly.Blocks['logic_contain'] = {
        };
        return TOOLTIPS[op];
      });
+ }
+
+};
