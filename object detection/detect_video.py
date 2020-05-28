@@ -69,29 +69,35 @@ def main(_argv):
         if img is None:
             logging.warning("Empty Frame")
             time.sleep(0.1)
+            #sleep():일정 시간 동안 실행 지연 -> 0.1초 지연
             continue
 
-        img_in = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img_in = tf.expand_dims(img_in, 0)
+        img_in = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)#(원본이미지, 색상 변환 코드), 이미지의 색상공간을 변경할 수 있음
+        #Red, Green, Blue 채널
+        
+        img_in = tf.expand_dims(img_in, 0) #차원을 추가하여 확장함, img_in이 주어졌을 때, 이 함수는 크기가 1인 차원을 img_in의 구조에서 차원 인덱스(0)에 삽입.
         img_in = transform_images(img_in, FLAGS.size)
 
-        t1 = time.time()
+        t1 = time.time()#현재 Unix timestamp을 소수로 리턴. 정수부는 초단위이고, 소수부는 마이크로(micro) 초단위
         boxes, scores, classes, nums = yolo.predict(img_in)
-        t2 = time.time()
-        times.append(t2-t1)
-        times = times[-20:]
+        #model.predict(): 훈련 된 모델이 주어지면 새로운 데이터 세트의 레이블을 예측한다. 이 메소드는 새로운 데이터 X_new(예 :) model.predict(X_new)와 같은 하나의 인수를 허용하고 배열의 각 객체에 대해 학습된 레이블을 반환
+        t2 = time.time()#현재 Unix timestamp을 소수로 리턴. 정수부는 초단위이고, 소수부는 마이크로(micro) 초단위
+        times.append(t2-t1)#배열에 t2-t1값 추가
+        times = times[-20:]# times[-20] = *(times-20)
 
-        img = draw_outputs(img, (boxes, scores, classes, nums), class_names)
+        img = draw_outputs(img, (boxes, scores, classes, nums), class_names)#인식된 박스
         img = cv2.putText(img, "Time: {:.2f}ms".format(sum(times)/len(times)*1000), (0, 30),
-                          cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 255), 2)
+                          cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 255), 2)#상단의 time
+         # putText(img파일, 출력문자, 출력문자 위치 좌표, 폰트체, 폰트크기 , 폰트에 대한 속성 등 )
         if FLAGS.output:
             out.write(img)
-        cv2.imshow('output', img)
-        if cv2.waitKey(1) == ord('q'):
+        cv2.imshow('output', img)#imshow 는 이미지 보기
+        #'output'은 윈도우 창의 제목을 의미하며 img는 cv2.imread() 의 return값 
+        if cv2.waitKey(1) == ord('q'):#q 입력 시 종료
             break
 
     cv2.destroyAllWindows()
-
+    #화면에 나타난 윈도우를 종료
 
 if __name__ == '__main__':
     try:
