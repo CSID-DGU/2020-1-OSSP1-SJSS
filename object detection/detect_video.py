@@ -1,7 +1,9 @@
 import time
 from absl import app, flags, logging
 from absl.flags import FLAGS
-import cv2
+#Tensorflow 에서 제공하는 flags 객체를 사용하면 고정값으로 되어 있는 기본적인 데이터를 편리하게 사용 가능
+#flags 객체는 int, float, boolean, string 의 값을 저장하고, 가져다 사용하기 쉽게 해주는 기능
+import cv2 #opencv
 import tensorflow as tf
 from yolov3_tf2.models import (
     YoloV3, YoloV3Tiny
@@ -9,7 +11,7 @@ from yolov3_tf2.models import (
 from yolov3_tf2.dataset import transform_images
 from yolov3_tf2.utils import draw_outputs
 
-
+#DEFINE_*** 로 시작되는 함수를 통해서 key, value 형식과 비슷하게 원하는 데이터를 정의
 flags.DEFINE_string('classes', './data/coco.names', 'path to classes file')
 flags.DEFINE_string('weights', './checkpoints/yolov3.tf',
                     'path to weights file')
@@ -20,6 +22,7 @@ flags.DEFINE_string('video', './data/video.mp4',
 flags.DEFINE_string('output', None, 'path to output video')
 flags.DEFINE_string('output_format', 'XVID', 'codec used in VideoWriter when saving video to file')
 flags.DEFINE_integer('num_classes', 80, 'number of classes in the model')
+#위와 같이 정의된 값들은 flags.FLAGS 를 통해서 어디에서든지 호출하여 사용 가능
 
 
 def main(_argv):
@@ -32,14 +35,17 @@ def main(_argv):
     else:
         yolo = YoloV3(classes=FLAGS.num_classes)
 
-    yolo.load_weights(FLAGS.weights)
-    logging.info('weights loaded')
+    yolo.load_weights(FLAGS.weights)#가중치 파일 로드
+    logging.info('weights loaded')#로드 완료 시 확인 용
 
-    class_names = [c.strip() for c in open(FLAGS.classes).readlines()]
-    logging.info('classes loaded')
+    class_names = [c.strip() for c in open(FLAGS.classes).readlines()]#classes파일 로드
+    logging.info('classes loaded')#로드 완료 시 확인 용
 
-    times = []
+    times = [] #t2-t1다루기 위한 배열
 
+    #cv2.VideoCapture()를 사용해 비디오 캡쳐 객체를 생성
+    #안의 숫자는 장치 인덱스(어떤 카메라를 사용할 것인가)를 의미
+    #1개만 부착되어 있으면 0, 2개 이상이면 첫 웹캠은 0, 두번째 웹캠은 1으로 지정
     try:
         vid = cv2.VideoCapture(int(FLAGS.video))
     except:
@@ -49,9 +55,11 @@ def main(_argv):
 
     if FLAGS.output:
         # by default VideoCapture returns float instead of int
-        width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))
-        height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        fps = int(vid.get(cv2.CAP_PROP_FPS))
+        width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))#프레임의 너비
+        height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))#프레임의 높이
+        fps = int(vid.get(cv2.CAP_PROP_FPS))#프레임 속도
+        #vidowriter 비디오를 저장
+        #cv2.VideoWriter(outputFile, fourcc, frame, size) : fourcc는 코덱 정보, frame은 초당 저장될 프레임, size는 저장될 사이즈
         codec = cv2.VideoWriter_fourcc(*FLAGS.output_format)
         out = cv2.VideoWriter(FLAGS.output, codec, fps, (width, height))
 
