@@ -98,7 +98,7 @@ Blockly.Arduino.logic_null = function() {
   var code = 'NULL';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
-
+//수정 중 (arduino ide 코드로 변환하는 코드)
 Blockly.Arduino.logic_contain = function() {
   var argument0 = Blockly.Arduino.valueToCode(this, 'A', order) || '0';
   var argument1 = Blockly.Arduino.valueToCode(this, 'B', order) || '0';
