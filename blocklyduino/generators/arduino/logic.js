@@ -98,3 +98,10 @@ Blockly.Arduino.logic_null = function() {
   var code = 'NULL';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.logic_contain = function() {
+  var argument0 = Blockly.Arduino.valueToCode(this, 'A', order) || '0';
+  var argument1 = Blockly.Arduino.valueToCode(this, 'B', order) || '0';
+  var code = argument0 + ' in ' + argument1;
+  return [code , Blockly.Arduino.ORDER_IN];
+};
