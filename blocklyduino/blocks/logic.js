@@ -436,3 +436,29 @@ Blockly.Blocks['logic_negate'] = {
     });
   }
 };
+
+Blockly.Blocks['logic_contain'] = {
+  /**
+   * Block for contain : 'in'.
+   * @this Blockly.Block
+   */
+  init: function() {
+    var OPERATORS =         
+     [Blockly.Msg.LOGIC_OPERATION_, 'IN'];
+     this.setColour(Blockly.Blocks.logic.HUE); 
+     this.setOutput(true, 'Boolean');
+     this.appendValueInput('A')
+         .setCheck('String');
+     this.appendDummyInput()
+         .appendField("in");
+     this.appendValueInput('B')
+         .setCheck('Array')
+     this.setInputsInline(true);
+     var thisBlock = this;
+     this.setTooltip(function() {
+       var op = thisBlock.getFieldValue('OP');
+       var TOOLTIPS = {
+         'IN': Blockly.Msg.LOGIC_CONTAIN_TOOLTIP_IN
+       };
+       return TOOLTIPS[op];
+     });
