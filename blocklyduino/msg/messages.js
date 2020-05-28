@@ -255,6 +255,9 @@ Blockly.Msg.LOGIC_OPERATION_TOOLTIP_OR = 'Return true if at least one of the inp
 /// block text - See [https://en.wikipedia.org/wiki/Disjunction https://en.wikipedia.org/wiki/Disjunction].
 Blockly.Msg.LOGIC_OPERATION_OR = 'or';
 
+Blockly.Msg.LOGIC_CONTAIN_TOOLTIP_IN = 'Return true if the second input contains the first input';
+Blockly.Msg.LOGIC_CONTAIN_IN = 'in';
+
 /// url - Information about logical negation.  The translation of [https://en.wikipedia.org/wiki/Logical_negation https://en.wikipedia.org/wiki/Logical_negation] is recommended if it exists in the target language.
 Blockly.Msg.LOGIC_NEGATE_HELPURL = 'https://github.com/google/blockly/wiki/Logic#not';
 /// block text - This is a unary operator that returns ''false'' when the input is ''true'', and ''true'' when the input is ''false''.
