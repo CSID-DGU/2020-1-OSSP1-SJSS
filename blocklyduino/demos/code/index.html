@@ -23,7 +23,8 @@
         <script src="../../blocks/loops.js"></script>
         <script src="../../blocks/math.js"></script>
         <script src="../../blocks/text.js"></script>  
-        <script src="../../blocks/variables.js"></script>   
+        <script src="../../blocks/variables.js"></script>
+        <script src="../../blocks/lists.js"></script> 
         <script src="../../blocks/procedures.js"></script>
         <script src="../../blocks/string.js"></script>  
         <script src="../../blocks/conversion.js"></script> 
@@ -51,6 +52,7 @@
         <script src="../../generators/arduino/loops.js"></script>
         <script src="../../generators/arduino/text.js"></script>  
         <script src="../../generators/arduino/variables.js"></script>
+        <script src="../../generators/arduino/lists.js"></script>
         <script src="../../generators/arduino/procedures.js"></script>
         <script src="../../generators/arduino/string.js"></script>
         <script src="../../generators/arduino/conversion.js"></script>
@@ -454,7 +456,19 @@
 
         <sep></sep>
         <category id="catVariables" colour="330" custom="VARIABLE"></category>
-        <category id="catObjectVar" colour="310" custom="VARIABLE"></category>
+        <category id="catObjectVar" colour="310">
+          <block type="lists_create_empty"></block>
+        <block type="lists_create_with"></block>
+        <block type="lists_create_with_container"></block>
+        <block type="lists_create_with_item"></block>
+        <block type="lists_repeat"></block>
+        <block type="lists_length"></block>
+        <block type="lists_isEmpty"></block>
+        <block type="lists_getIndex"></block>
+        <block type="lists_setIndex"></block>
+        <block type="lists_getSublist"></block>
+        <block type="lists_split"></block>
+        </category>
         <category id="catFunctions" colour="290" custom="PROCEDURE"></category>
     </xml>
 
