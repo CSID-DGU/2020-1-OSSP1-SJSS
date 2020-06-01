@@ -98,10 +98,22 @@ Blockly.Arduino.logic_null = function() {
   var code = 'NULL';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
-//수정 중 (arduino ide 코드로 변환하는 코드)
+
+
 Blockly.Arduino.logic_contain = function() {
-  var argument0 = Blockly.Arduino.valueToCode(this, 'A', order) || '0';
-  var argument1 = Blockly.Arduino.valueToCode(this, 'B', order) || '0';
-  var code = argument0 + ' in ' + argument1;
-  return [code , Blockly.Arduino.ORDER_IN];
+
+  var object_var = Blockly.Arduino.valueToCode(this, 'A', Blockly.Arduino.ORDER_ATOMIC); //ATOMIC은 숫자나 String 등 하나의 독립적 값을 의미
+  var object_arr = Blockly.Arduino.valueToCode(this, 'B', Blockly.Arduino.ORDER_ATOMIC);
+  var object_size = Blockly.Arduino.valueToCode(this, 'C', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_['setup_contain'] = 'i = 0; \n';
+    Blockly.Arduino.definitions_['define_contain'] = 'void contain() {\n'+
+    'for  (int size = 0; size <'+object_var+'; size ++) {\n'+
+    '  if ('+object_arr+'[size] == '+object_size+') {\n'+
+    '   return true;' +
+    '  }\n' +
+    '  else {\n' +
+    '   return false;\n' +
+    '  } }\n\n';
+    var code='contain();\n';
+  return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
