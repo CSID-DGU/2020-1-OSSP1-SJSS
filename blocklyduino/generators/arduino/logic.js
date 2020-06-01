@@ -114,6 +114,6 @@ Blockly.Arduino.logic_contain = function() {
     '  else {\n' +
     '   return false;\n' +
     '  } }\n\n';
-    var code='contain();\n';
+    var code='contain()';
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
