@@ -1,6 +1,6 @@
 /**
  * @license
- * Visual Blocks Editor
+ * Visual Arduino Editor
  *
  * Copyright 2012 Google Inc.
  * https://developers.google.com/blockly/
@@ -19,22 +19,22 @@
  */
 
 /**
- * @fileoverview List blocks for Blockly.
+ * @fileoverview List Arduino for Blockly.
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.lists');
+goog.provide('Blockly.Arduino.lists');
 
-goog.require('Blockly.Blocks');
-
+goog.require('Blockly.Arduino');
+goog.require('Blockly.Types');
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue for all Arduino in this category.
  */
-Blockly.Blocks.lists.HUE = 260;
+Blockly.Arduino.lists.HUE = 260;
 
-Blockly.Blocks['lists_create_empty'] = {
+Blockly.Arduino['lists_create_empty'] = {
   /**
    * Block for creating an empty list.
    * The 'list_create_with' block is preferred as it is more flexible.
@@ -47,21 +47,21 @@ Blockly.Blocks['lists_create_empty'] = {
     this.jsonInit({
       "message0": Blockly.Msg.LISTS_CREATE_EMPTY_TITLE,
       "output": "Array",
-      "colour": Blockly.Blocks.lists.HUE,
+      "colour": Blockly.Arduino.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_CREATE_EMPTY_TOOLTIP,
       "helpUrl": Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL
     });
   }
 };
 
-Blockly.Blocks['lists_create_with'] = {
+Blockly.Arduino['lists_create_with'] = {
   /**
    * Block for creating a list with any number of elements of any type.
    * @this Blockly.Block
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.LISTS_CREATE_WITH_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Arduino.lists.HUE);
     this.itemCount_ = 3;
     this.updateShape_();
     this.setOutput(true, 'Array');
@@ -94,12 +94,11 @@ Blockly.Blocks['lists_create_with'] = {
    * @this Blockly.Block
    */
   decompose: function(workspace) {
-    var containerBlock =
-        Blockly.Block.obtain(workspace, 'lists_create_with_container');
+    var containerBlock = workspace.newBlock('lists_create_with_container');
     containerBlock.initSvg();
     var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.itemCount_; i++) {
-      var itemBlock = Blockly.Block.obtain(workspace, 'lists_create_with_item');
+      var itemBlock = workspace.newBlock('lists_create_with_item');
       itemBlock.initSvg();
       connection.connect(itemBlock.previousConnection);
       connection = itemBlock.nextConnection;
@@ -120,17 +119,22 @@ Blockly.Blocks['lists_create_with'] = {
       itemBlock = itemBlock.nextConnection &&
           itemBlock.nextConnection.targetBlock();
     }
+    // Disconnect any children that don't belong.
+    for (var i = 0; i < this.itemCount_; i++) {
+      var connection = this.getInput('ADD' + i).connection.targetConnection;
+      if (connection && connections.indexOf(connection) == -1) {
+        connection.disconnect();
+      }
+    }
     this.itemCount_ = connections.length;
     this.updateShape_();
-    // Reconnect any child blocks.
+    // Reconnect any child Arduino.
     for (var i = 0; i < this.itemCount_; i++) {
-      if (connections[i]) {
-        this.getInput('ADD' + i).connection.connect(connections[i]);
-      }
+      Blockly.Mutator.reconnect(connections[i], this, 'ADD' + i);
     }
   },
   /**
-   * Store pointers to any connected child blocks.
+   * Store pointers to any connected child Arduino.
    * @param {!Blockly.Block} containerBlock Root block in mutator.
    * @this Blockly.Block
    */
@@ -151,38 +155,36 @@ Blockly.Blocks['lists_create_with'] = {
    * @this Blockly.Block
    */
   updateShape_: function() {
-    // Delete everything.
-    if (this.getInput('EMPTY')) {
+    if (this.itemCount_ && this.getInput('EMPTY')) {
       this.removeInput('EMPTY');
-    } else {
-      var i = 0;
-      while (this.getInput('ADD' + i)) {
-        this.removeInput('ADD' + i);
-        i++;
-      }
-    }
-    // Rebuild block.
-    if (this.itemCount_ == 0) {
+    } else if (!this.itemCount_ && !this.getInput('EMPTY')) {
       this.appendDummyInput('EMPTY')
           .appendField(Blockly.Msg.LISTS_CREATE_EMPTY_TITLE);
-    } else {
-      for (var i = 0; i < this.itemCount_; i++) {
+    }
+    // Add new inputs.
+    for (var i = 0; i < this.itemCount_; i++) {
+      if (!this.getInput('ADD' + i)) {
         var input = this.appendValueInput('ADD' + i);
         if (i == 0) {
           input.appendField(Blockly.Msg.LISTS_CREATE_WITH_INPUT_WITH);
         }
       }
     }
+    // Remove deleted inputs.
+    while (this.getInput('ADD' + i)) {
+      this.removeInput('ADD' + i);
+      i++;
+    }
   }
 };
 
-Blockly.Blocks['lists_create_with_container'] = {
+Blockly.Arduino['lists_create_with_container'] = {
   /**
    * Mutator block for list container.
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Arduino.lists.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.LISTS_CREATE_WITH_CONTAINER_TITLE_ADD);
     this.appendStatementInput('STACK');
@@ -191,13 +193,13 @@ Blockly.Blocks['lists_create_with_container'] = {
   }
 };
 
-Blockly.Blocks['lists_create_with_item'] = {
+Blockly.Arduino['lists_create_with_item'] = {
   /**
    * Mutator bolck for adding items.
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Arduino.lists.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.LISTS_CREATE_WITH_ITEM_TITLE);
     this.setPreviousStatement(true);
@@ -207,7 +209,7 @@ Blockly.Blocks['lists_create_with_item'] = {
   }
 };
 
-Blockly.Blocks['lists_repeat'] = {
+Blockly.Arduino['lists_repeat'] = {
   /**
    * Block for creating a list with one element repeated.
    * @this Blockly.Block
@@ -223,18 +225,18 @@ Blockly.Blocks['lists_repeat'] = {
         {
           "type": "input_value",
           "name": "NUM",
-          "check": "Number"
+          "check": Blockly.Types.NUMBER.checkList
         }
       ],
       "output": "Array",
-      "colour": Blockly.Blocks.lists.HUE,
+      "colour": Blockly.Arduino.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_REPEAT_TOOLTIP,
       "helpUrl": Blockly.Msg.LISTS_REPEAT_HELPURL
     });
   }
 };
 
-Blockly.Blocks['lists_length'] = {
+Blockly.Arduino['lists_length'] = {
   /**
    * Block for list length.
    * @this Blockly.Block
@@ -246,18 +248,18 @@ Blockly.Blocks['lists_length'] = {
         {
           "type": "input_value",
           "name": "VALUE",
-          "check": ['String', 'Array']
+          "check": Blockly.Types.TEXT.checkList.concat('Array')
         }
       ],
-      "output": 'Number',
-      "colour": Blockly.Blocks.lists.HUE,
+      "output": Blockly.Types.NUMBER.output,
+      "colour": Blockly.Arduino.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_LENGTH_TOOLTIP,
       "helpUrl": Blockly.Msg.LISTS_LENGTH_HELPURL
     });
   }
 };
 
-Blockly.Blocks['lists_isEmpty'] = {
+Blockly.Arduino['lists_isEmpty'] = {
   /**
    * Block for is the list empty?
    * @this Blockly.Block
@@ -269,18 +271,18 @@ Blockly.Blocks['lists_isEmpty'] = {
         {
           "type": "input_value",
           "name": "VALUE",
-          "check": ['String', 'Array']
+          "check": Blockly.Types.TEXT.checkList.concat('Array')
         }
       ],
-      "output": 'Boolean',
-      "colour": Blockly.Blocks.lists.HUE,
+      "output": Blockly.Types.BOOLEAN.output,
+      "colour": Blockly.Arduino.lists.HUE,
       "tooltip": Blockly.Msg.LISTS_ISEMPTY_TOOLTIP,
       "helpUrl": Blockly.Msg.LISTS_ISEMPTY_HELPURL
     });
   }
 };
 
-Blockly.Blocks['lists_indexOf'] = {
+Blockly.Arduino['lists_indexOf'] = {
   /**
    * Block for finding an item in the list.
    * @this Blockly.Block
@@ -290,8 +292,8 @@ Blockly.Blocks['lists_indexOf'] = {
         [[Blockly.Msg.LISTS_INDEX_OF_FIRST, 'FIRST'],
          [Blockly.Msg.LISTS_INDEX_OF_LAST, 'LAST']];
     this.setHelpUrl(Blockly.Msg.LISTS_INDEX_OF_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
-    this.setOutput(true, 'Number');
+    this.setColour(Blockly.Arduino.lists.HUE);
+    this.setOutput(true, Blockly.Types.NUMBER.output);
     this.appendValueInput('VALUE')
         .setCheck('Array')
         .appendField(Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST);
@@ -302,7 +304,7 @@ Blockly.Blocks['lists_indexOf'] = {
   }
 };
 
-Blockly.Blocks['lists_getIndex'] = {
+Blockly.Arduino['lists_getIndex'] = {
   /**
    * Block for getting element at index.
    * @this Blockly.Block
@@ -319,7 +321,7 @@ Blockly.Blocks['lists_getIndex'] = {
          [Blockly.Msg.LISTS_GET_INDEX_LAST, 'LAST'],
          [Blockly.Msg.LISTS_GET_INDEX_RANDOM, 'RANDOM']];
     this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Arduino.lists.HUE);
     var modeMenu = new Blockly.FieldDropdown(MODE, function(value) {
       var isStatement = (value == 'REMOVE');
       this.sourceBlock_.updateStatement_(isStatement);
@@ -407,7 +409,7 @@ Blockly.Blocks['lists_getIndex'] = {
     this.removeInput('ORDINAL', true);
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
-      this.appendValueInput('AT').setCheck('Number');
+      this.appendValueInput('AT').setCheck(Blockly.Types.NUMBER.checkList);
       if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
         this.appendDummyInput('ORDINAL')
             .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
@@ -434,7 +436,7 @@ Blockly.Blocks['lists_getIndex'] = {
   }
 };
 
-Blockly.Blocks['lists_setIndex'] = {
+Blockly.Arduino['lists_setIndex'] = {
   /**
    * Block for setting the element at index.
    * @this Blockly.Block
@@ -450,7 +452,7 @@ Blockly.Blocks['lists_setIndex'] = {
          [Blockly.Msg.LISTS_GET_INDEX_LAST, 'LAST'],
          [Blockly.Msg.LISTS_GET_INDEX_RANDOM, 'RANDOM']];
     this.setHelpUrl(Blockly.Msg.LISTS_SET_INDEX_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Arduino.lists.HUE);
     this.appendValueInput('LIST')
         .setCheck('Array')
         .appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_IN_LIST);
@@ -507,7 +509,7 @@ Blockly.Blocks['lists_setIndex'] = {
     this.removeInput('ORDINAL', true);
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
-      this.appendValueInput('AT').setCheck('Number');
+      this.appendValueInput('AT').setCheck(Blockly.Types.NUMBER.checkList);
       if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
         this.appendDummyInput('ORDINAL')
             .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
@@ -536,7 +538,7 @@ Blockly.Blocks['lists_setIndex'] = {
   }
 };
 
-Blockly.Blocks['lists_getSublist'] = {
+Blockly.Arduino['lists_getSublist'] = {
   /**
    * Block for getting sublist.
    * @this Blockly.Block
@@ -551,7 +553,7 @@ Blockly.Blocks['lists_getSublist'] = {
          [Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_END, 'FROM_END'],
          [Blockly.Msg.LISTS_GET_SUBLIST_END_LAST, 'LAST']];
     this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Arduino.lists.HUE);
     this.appendValueInput('LIST')
         .setCheck('Array')
         .appendField(Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
@@ -606,7 +608,7 @@ Blockly.Blocks['lists_getSublist'] = {
     this.removeInput('ORDINAL' + n, true);
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
-      this.appendValueInput('AT' + n).setCheck('Number');
+      this.appendValueInput('AT' + n).setCheck(Blockly.Types.NUMBER.checkList);
       if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
         this.appendDummyInput('ORDINAL' + n)
             .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
@@ -641,7 +643,47 @@ Blockly.Blocks['lists_getSublist'] = {
   }
 };
 
-Blockly.Blocks['lists_split'] = {
+Blockly.Arduino['lists_sort'] = {
+  /**
+   * Block for sorting a list.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.LISTS_SORT_TITLE,
+      "args0": [
+        {
+          "type": "field_dropdown",
+          "name": "TYPE",
+          "options": [
+            [Blockly.Msg.LISTS_SORT_TYPE_NUMERIC, "NUMERIC"],
+            [Blockly.Msg.LISTS_SORT_TYPE_TEXT, "TEXT"],
+            [Blockly.Msg.LISTS_SORT_TYPE_IGNORECASE, "IGNORE_CASE"]
+          ]
+        },
+        {
+          "type": "field_dropdown",
+          "name": "DIRECTION",
+          "options": [
+            [Blockly.Msg.LISTS_SORT_ORDER_ASCENDING, "1"],
+            [Blockly.Msg.LISTS_SORT_ORDER_DESCENDING, "-1"]
+          ]
+        },
+        {
+          "type": "input_value",
+          "name": "LIST",
+          "check": "Array"
+        }
+      ],
+      "output": "Array",
+      "colour": Blockly.Arduino.lists.HUE,
+      "tooltip": Blockly.Msg.LISTS_SORT_TOOLTIP,
+      "helpUrl": Blockly.Msg.LISTS_SORT_HELPURL
+    });
+  }
+};
+
+Blockly.Arduino['lists_split'] = {
   /**
    * Block for splitting text into a list, or joining a list into text.
    * @this Blockly.Block
@@ -656,12 +698,12 @@ Blockly.Blocks['lists_split'] = {
           thisBlock.updateType_(newMode);
         });
     this.setHelpUrl(Blockly.Msg.LISTS_SPLIT_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Arduino.lists.HUE);
     this.appendValueInput('INPUT')
-        .setCheck('String')
+        .setCheck(Blockly.Types.TEXT.checkList)
         .appendField(dropdown, 'MODE');
     this.appendValueInput('DELIM')
-        .setCheck('String')
+        .setCheck(Blockly.Types.TEXT.checkList)
         .appendField(Blockly.Msg.LISTS_SPLIT_WITH_DELIMITER);
     this.setInputsInline(true);
     this.setOutput(true, 'Array');
@@ -684,9 +726,9 @@ Blockly.Blocks['lists_split'] = {
   updateType_: function(newMode) {
     if (newMode == 'SPLIT') {
       this.outputConnection.setCheck('Array');
-      this.getInput('INPUT').setCheck('String');
+      this.getInput('INPUT').setCheck(Blockly.Types.TEXT.checkList);
     } else {
-      this.outputConnection.setCheck('String');
+      this.outputConnection.setCheck(Blockly.Types.TEXT.checkList);
       this.getInput('INPUT').setCheck('Array');
     }
   },
