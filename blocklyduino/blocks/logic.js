@@ -455,12 +455,17 @@ Blockly.Blocks['logic_contain'] = {
          .setCheck('Array')
      this.setInputsInline(true);
      var thisBlock = this;
+     this.appendDummyInput()
+         .appendField("for size");
+     this.appendValueInput('C')
+         .setCheck('Number');
+         this.setInputsInline(true);
+     this.setOutput(true, "Boolean");
+     var thisBlock = this;
      this.setTooltip(function() {
-       var op = thisBlock.getFieldValue('OP');
        var TOOLTIPS = {
          'IN': Blockly.Msg.LOGIC_CONTAIN_TOOLTIP_IN
        };
-       return TOOLTIPS[op];
      });
  }
 
