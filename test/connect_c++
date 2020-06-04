@@ -3,6 +3,12 @@
 #include<string.h>
 using namespace std;
 int main() {
-	system("test.bat");
+	system("test.bat");//파이썬 실행을 위한 배치파일
 	return 0;
 }
+
+/*
+test.bat 내용
+ cd (yolo 파일의 경로)
+ python detect_video.py --video 0
+*/
