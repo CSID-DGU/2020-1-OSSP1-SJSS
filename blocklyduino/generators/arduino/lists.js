@@ -24,7 +24,7 @@ Blockly.Arduino['lists_create_object'] = function(block) {
   var code='object()'; //배열을 리턴해주는 함수 
   var dropdown_type = '#include';
   var varName='<objectDetection.h>' //object detection 을 실행하고 객체 탐지 배열을 리턴해주는 함수가 있는 헤더 추가
-  Blockly.Arduino.definitions_['variables'+varName] = dropdown_type + '  ' + varName + ';' ;
+  Blockly.Arduino.definitions_['variables'+varName] = dropdown_type + '  ' + varName  ;
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
