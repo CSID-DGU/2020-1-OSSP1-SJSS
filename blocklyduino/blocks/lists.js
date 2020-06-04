@@ -34,23 +34,16 @@ goog.require('Blockly.Types');
  */
 Blockly.Arduino.lists.HUE = 260;
 
-Blockly.Arduino['lists_create_empty'] = {
-  /**
-   * Block for creating an empty list.
-   * The 'list_create_with' block is preferred as it is more flexible.
-   * <block type="lists_create_with">
-   *   <mutation items="0"></mutation>
-   * </block>
-   * @this Blockly.Block
-   */
+//object array 받아오기 위한 
+Blockly.Arduino['lists_create_object'] = {
   init: function() {
     this.jsonInit({
-      "message0": Blockly.Msg.LISTS_CREATE_EMPTY_TITLE,
+      "message0": Blockly.Msg.LISTS_CREATE_OBJECT_TITLE,
       "output": "Array",
-      "colour": Blockly.Arduino.lists.HUE,
-      "tooltip": Blockly.Msg.LISTS_CREATE_EMPTY_TOOLTIP,
-      "helpUrl": Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL
+      "colour": 260,
+      "tooltip": Blockly.Msg.LISTS_CREATE_OBJECT_TOOLTIP
     });
+
   }
 };
 
