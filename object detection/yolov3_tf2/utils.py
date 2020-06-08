@@ -104,7 +104,7 @@ def draw_outputs(img, outputs, class_names):
     boxes, objectness, classes, nums = outputs
     boxes, objectness, classes, nums = boxes[0], objectness[0], classes[0], nums[0]
     wh = np.flip(img.shape[0:2])
-    f = open("test.txt",'w') # 파일을 열어 쓰기 
+    f = open("output.txt",'w') # 파일을 열어 쓰기 
     for i in range(6):
         #astype- array를 통째로 형변환(int 32)
         x1y1 = tuple((np.array(boxes[i][0:2]) * wh).astype(np.int32))
