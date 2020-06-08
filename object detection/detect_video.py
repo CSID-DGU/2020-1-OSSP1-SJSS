@@ -86,9 +86,7 @@ def main(_argv):
         times = times[-20:]# times[-20] = *(times-20)
 
         img = draw_outputs(img, (boxes, scores, classes, nums), class_names)#인식된 박스
-        img = cv2.putText(img, "Time: {:.2f}ms".format(sum(times)/len(times)*1000), (0, 30),
-                          cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 255), 2)#상단의 time
-         # putText(img파일, 출력문자, 출력문자 위치 좌표, 폰트체, 폰트크기 , 폰트에 대한 속성 등 )
+         
         if FLAGS.output:
             out.write(img)
         cv2.imshow('output', img)#imshow 는 이미지 보기
