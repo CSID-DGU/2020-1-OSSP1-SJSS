@@ -46,10 +46,10 @@ def main(_argv):
     #cv2.VideoCapture()를 사용해 비디오 캡쳐 객체를 생성
     #안의 숫자는 장치 인덱스(어떤 카메라를 사용할 것인가)를 의미
     #1개만 부착되어 있으면 0, 2개 이상이면 첫 웹캠은 0, 두번째 웹캠은 1으로 지정
-    try:
-        vid = cv2.VideoCapture(int(FLAGS.video))
-    except:
-        vid = cv2.VideoCapture(FLAGS.video)
+    #try:
+    #    vid = cv2.VideoCapture(int(FLAGS.video))
+    #except:
+    #    vid = cv2.VideoCapture(FLAGS.video)
 
     vid = cv2.VideoCapture(0)
     out = None
