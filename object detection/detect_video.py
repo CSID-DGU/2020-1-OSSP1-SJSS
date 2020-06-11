@@ -51,6 +51,7 @@ def main(_argv):
     except:
         vid = cv2.VideoCapture(FLAGS.video)
 
+    vid = cv2.VideoCapture(0)
     out = None
 
     if FLAGS.output:
