@@ -86,7 +86,7 @@ function saveCode() {
     }
  //
     var d = new Date();
-  var fileName = window.prompt('What would you like to name your file?', 'BlocklyDuinoEnhanced_'+'_'+d.getMinutes()+d.getMilliseconds())
+  var fileName = window.prompt('What would you like to name your file?', 'Oblock_'+'_'+d.getMinutes()+d.getMilliseconds())
   //doesn't save if the user quits the save prompt
   if(fileName){
     var blob = new Blob([Blockly.Arduino.workspaceToCode()], {type: 'text/ino;charset=utf-8'});
