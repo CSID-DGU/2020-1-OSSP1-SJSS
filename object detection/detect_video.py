@@ -12,8 +12,8 @@ from yolov3_tf2.dataset import transform_images
 from yolov3_tf2.utils import draw_outputs
 
 #DEFINE_*** 로 시작되는 함수를 통해서 key, value 형식과 비슷하게 원하는 데이터를 정의
-flags.DEFINE_string('classes', './data/coco.names', 'path to classes file')
-flags.DEFINE_string('weights', './checkpoints/yolov3.tf',
+flags.DEFINE_string('classes', 'C:\\Users\\wnsru\\Desktop\\2020-1-OSSP1-SJSS-4-master\\blocklyduino\\demos\\code\\data\\coco.names', 'path to classes file')
+flags.DEFINE_string('weights', 'C:\\Users\\wnsru\\Desktop\\2020-1-OSSP1-SJSS-4-master\\blocklyduino\\demos\\code\\checkpoints\\yolov3.tf',
                     'path to weights file')
 flags.DEFINE_boolean('tiny', False, 'yolov3 or yolov3-tiny')
 flags.DEFINE_integer('size', 416, 'resize images to')
