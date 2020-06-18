@@ -104,7 +104,9 @@ def draw_outputs(img, outputs, class_names):
     boxes, objectness, classes, nums = outputs
     boxes, objectness, classes, nums = boxes[0], objectness[0], classes[0], nums[0]
     wh = np.flip(img.shape[0:2])
-    f = open("output.txt",'w') # 파일을 열어 쓰기 
+    global obj 
+    obj = []
+    #f = open("output.txt",'w') # 파일을 열어 쓰기 
     for i in range(6):
         #astype- array를 통째로 형변환(int 32)
         x1y1 = tuple((np.array(boxes[i][0:2]) * wh).astype(np.int32))
@@ -113,7 +115,8 @@ def draw_outputs(img, outputs, class_names):
           #rectangle(사각형이 그려질 이미지, 사각형의 시작점,시작점과 대각선에 있는 끝점 ,사각형의 색, 선굵기)
         img = cv2.putText(img, '{} {:.4f}'.format( class_names[int(classes[i])], objectness[i]),x1y1, cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 255), 2)
                   # putText(img파일, 출력문자,출력문자 위치 좌표, 폰트체, 폰트크기 , 폰트에 대한 속성 등 )
-        f.write(class_names[int(classes[i])]+ ' ') # 파일에 인식한 물체의 이름 저장   
+        #f.write(class_names[int(classes[i])]+ ' ') # 파일에 인식한 물체의 이름 저장
+        obj.append(class_names[int(classes[i])]) #전역 변수에 저장
     return img
 
 
