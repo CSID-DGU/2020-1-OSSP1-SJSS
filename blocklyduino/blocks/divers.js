@@ -34,7 +34,6 @@ Blockly.Blocks['grove_temporature_sensor'] = {
     this.setColour(150);
     this.appendDummyInput()
         .appendField(Blockly.Msg.VAR_TemSens)
-        .appendField(new Blockly.FieldImage("http://www.seeedstudio.com/wiki/images/thumb/b/b0/Temperature1.jpg/400px-Temperature1.jpg", 64, 64))
         .appendField(Blockly.Msg.PIN)
         .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN");
     this.setOutput(true, 'Number');
@@ -48,7 +47,6 @@ Blockly.Blocks['grove_ultrasonic_ranger'] = {
     this.setColour(150);
     this.appendDummyInput()
 	      .appendField(Blockly.Msg.ultrasonic_ranger)
-        .appendField(new Blockly.FieldImage("https://lh3.googleusercontent.com/proxy/ctt4TnP3Nqj0jBb5-ln2au_cosDHnhqk2t1XR-8A1TNQSImtos1GgUCTpNU_qz5XCrC8-6SlFl793JTo5zs7xYEwJUSA3c4xEpFM8DlTx7Qdi2ScCAKANHWuGthOKu5DPJ4dnSrrJE4B04qkYOhfXQ", 64, 64)) //예시 이미지 출력.
 	      .appendField(Blockly.Msg.TRIG) //Trig 핀을 통해서 초음파를 발생하고,
         .appendField(new Blockly.FieldDropdown(profile.default.digital_2), "PIN_TRIG")
         .appendField(Blockly.Msg.Echo) //echo 핀을 통해서 초음파를 받아들임.
