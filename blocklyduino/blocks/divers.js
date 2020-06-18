@@ -46,11 +46,11 @@ Blockly.Blocks['grove_ultrasonic_ranger'] = {
   init: function() {
     this.setColour(150);
     this.appendDummyInput()
-	      .appendField(Blockly.Msg.ultrasonic_ranger)
-	      .appendField(Blockly.Msg.TRIG) //Trig 핀을 통해서 초음파를 발생하고,
-        .appendField(new Blockly.FieldDropdown(profile.default.digital_2), "PIN_TRIG")
-        .appendField(Blockly.Msg.Echo) //echo 핀을 통해서 초음파를 받아들임.
-        .appendField(new Blockly.FieldDropdown(profile.default.digital_2), "PIN_ECHO");
+	     .appendField(Blockly.Msg.ultrasonic_ranger+"  ")
+	      .appendField("[ TRIG :") //Trig 핀을 통해서 초음파를 발생하고,
+        .appendField("(A0)")
+        .appendField("|  Echo:") //echo 핀을 통해서 초음파를 받아들임.
+        .appendField("(A5) ]");
 //        .appendField(new Blockly.FieldDropdown([["cm", "cm"],  ["inch", "inch"]]), "UNIT"); //단위를 정하면, 둘 다 같은 단위로 초음파를 받아들임.
     this.setOutput(true, 'Number'); //거리를 출력
     this.setTooltip('Non-contact distance measurement module'); //접촉하지 않은 물체와의 거리를 측정하는 모듈 - 설명.
