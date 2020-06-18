@@ -105,7 +105,6 @@ Blockly.Arduino.logic_contain = function() {
   var object_var = Blockly.Arduino.valueToCode(this, 'A', Blockly.Arduino.ORDER_ATOMIC); //ATOMIC은 숫자나 String 등 하나의 독립적 값을 의미
   var object_arr = Blockly.Arduino.valueToCode(this, 'B', Blockly.Arduino.ORDER_ATOMIC);
   var object_size = Blockly.Arduino.valueToCode(this, 'C', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.setups_['setup_contain'] = 'i = 0; \n';
     Blockly.Arduino.definitions_['define_contain'] = '\nvoid contain(string str) {\n'+
     'for  (int size = 0; size <'+ object_size+'; size ++) {\n'+
     '  if ('+object_arr+'[size] == str) {\n'+
