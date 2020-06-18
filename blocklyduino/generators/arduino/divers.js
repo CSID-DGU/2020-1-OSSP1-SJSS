@@ -55,14 +55,14 @@ Blockly.Arduino['grove_motor_shield'] = function(block) {
   "   motor_R.run(RELEASE);\n";
   var code = "";
   if(dropdown_direction==="forward"){
-    Blockly.Arduino.definitions_['define_forward'] = "void forward()\n"+
+    Blockly.Arduino.definitions_['define_forward'] = "\nvoid forward()\n"+
 "{\n"+
      "   motor_L.run(FORWARD);\n"+
      "   motor_R.run(FORWARD);\n"+
 "}\n";
     code="forward();\n";
   } else if (dropdown_direction==="left") {
-    Blockly.Arduino.definitions_['define_right'] = "void right()\n"+
+    Blockly.Arduino.definitions_['define_right'] = "\nvoid right()\n"+
 "{\n"+
      "   motor_L.run(RELEASE);\n"+
      "   motor_R.run(FORWARD);\n"+
@@ -70,7 +70,7 @@ Blockly.Arduino['grove_motor_shield'] = function(block) {
 "}\n\n";
     code="right();\n";
   } else if (dropdown_direction==="right") {
-    Blockly.Arduino.definitions_['define_left'] = "void left()\n"+
+    Blockly.Arduino.definitions_['define_left'] = "\nvoid left()\n"+
 "{\n"+
      "   motor_L.run(FORWARD);\n"+
      "   motor_R.run(RELEASE);\n"+
@@ -78,14 +78,14 @@ Blockly.Arduino['grove_motor_shield'] = function(block) {
 "}\n\n";
     code="left();\n";
   } else if (dropdown_direction==="backward"){
-    Blockly.Arduino.definitions_['define_backward'] = "void backward()\n"+
+    Blockly.Arduino.definitions_['define_backward'] = "\nvoid backward()\n"+
 "{\n"+
      "   motor_L.run(BACKWARD);\n"+
      "   motor_R.run(BACKWARD);\n"+
 "}\n\n";
     code="backward();\n";
   } else if (dropdown_direction==="stop"){
-    Blockly.Arduino.definitions_['define_stop'] = "void stop()\n"+
+    Blockly.Arduino.definitions_['define_stop'] = "\nvoid stop()\n"+
 "{\n"+
      "   motor_L.run(RELEASE);\n"+
      "   motor_R.run(RELEASE);\n"+
