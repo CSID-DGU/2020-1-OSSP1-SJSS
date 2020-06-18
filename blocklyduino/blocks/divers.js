@@ -68,10 +68,10 @@ Blockly.Blocks['grove_motor_shield'] = { //모터 작동 속도와 방향 제어
         .appendField(new Blockly.FieldImage("http://www.seeedstudio.com/wiki/images/thumb/4/4d/Smotoshield2.jpg/400px-Smotoshield2.jpg", 64, 64))
         //motor 블록 dropdown 메뉴 (stop, forward, right, left, backward)
         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.Stop, "stop"], [Blockly.Msg.Forward, "forward"], [Blockly.Msg.Right, "right"], [Blockly.Msg.Left, "left"], [Blockly.Msg.Backward, "backward"]]), "DIRECTION");
-    /*this.appendValueInput("SPEED", 'Number') 
+    this.appendValueInput("SPEED", 'Number') 
         .setCheck('Number')
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Speed");*/
+        .appendField("Speed");
     //top, bottom 모두 connection 갖는 블록
     this.setPreviousStatement(true, null); 
     this.setNextStatement(true, null); 
