@@ -53,7 +53,7 @@ Blockly.Arduino['lists_length'] = function(block) {
   // String or array length.
   var list = Blockly.Arduino.valueToCode(block, 'VALUE',
       Blockly.Arduino.ORDER_NONE) || '[]';
-  return ['len(' + list + ')', Blockly.Arduino.ORDER_FUNCTION_CALL];
+  return [list+'.length()', Blockly.Arduino.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Arduino['lists_isEmpty'] = function(block) {
