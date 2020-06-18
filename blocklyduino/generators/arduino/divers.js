@@ -42,6 +42,11 @@ Blockly.Arduino['grove_ultrasonic_ranger'] = function(block) {
 };
 
 Blockly.Arduino['grove_motor_shield'] = function(block) {
+  var dropdown_type = '#include';
+  var varName='<AFMotor.h>';
+  var motorpin='AF_DCMotor motor_L(1); \nAF_DCMotor motor_R(4);';
+  Blockly.Arduino.definitions_['variables'+varName] = dropdown_type + '  ' + varName+'\n\n'+motorpin  ;
+	
   var dropdown_direction = this.getFieldValue('DIRECTION');
   var speed = Blockly.Arduino.valueToCode(this, 'SPEED', Blockly.Arduino.ORDER_ATOMIC) || '150';
   Blockly.Arduino.setups_["setup_motor"] =  " motor_L.setSpeed("+speed+");\n"+
