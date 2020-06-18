@@ -405,7 +405,7 @@ Blockly.Msg.Serial_Print_ForBin="binary";
 Blockly.Msg.Serial_Print_ForOct="octal";
 Blockly.Msg.Serial_read="Serial Read";
 Blockly.Msg.Serial_avai="Serial Available?";
-Blockly.Msg.Serial_flush="Serial flush";
+Blockly.Msg.Serial_flush="Serial begin";
 
 //SOFTWARE SERIAL
 Blockly.Msg.SSERIAL_Init="INIT";
