@@ -112,7 +112,7 @@ Blockly.Arduino.logic_contain = function() {
     '  }\n' +
     '  else {\n' +
     '   return false;\n' +
-    '  }\n}\n';
+    '  }\n}\n}';
     var code='contain('+object_var+')';
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
