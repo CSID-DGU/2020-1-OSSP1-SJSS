@@ -106,14 +106,14 @@ Blockly.Arduino.logic_contain = function() {
   var object_arr = Blockly.Arduino.valueToCode(this, 'B', Blockly.Arduino.ORDER_ATOMIC);
   var object_size = Blockly.Arduino.valueToCode(this, 'C', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.setups_['setup_contain'] = 'i = 0; \n';
-    Blockly.Arduino.definitions_['define_contain'] = '\nvoid contain() {\n'+
+    Blockly.Arduino.definitions_['define_contain'] = '\nvoid contain(string str) {\n'+
     'for  (int size = 0; size <'+ object_size+'; size ++) {\n'+
-    '  if ('+object_arr+'[size] == '+object_var+') {\n'+
+    '  if ('+object_arr+'[size] == str) {\n'+
     '   return true;' +
     '  }\n' +
     '  else {\n' +
     '   return false;\n' +
     '  }\n}\n';
-    var code='contain()';
+    var code='contain('+object_var+')';
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
