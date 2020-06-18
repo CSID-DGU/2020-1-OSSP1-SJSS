@@ -6,7 +6,7 @@ object detection 라이브러리를 추가한 웹 아두이노 블록 코딩 설
 
 ## 핵심 기술
 object detection(사물인식) 
-using tensorflow c api :
+using tensorflow python :
 ![tensorflow(object detection)](https://user-images.githubusercontent.com/59370701/80907325-30464380-8d51-11ea-89aa-92bc55afc1fa.JPG)
 
 ## 목적
@@ -75,11 +75,6 @@ object detection 라이브러리를 추가한 웹 아두이노 블록 코딩 설
 - mblock
 
 #### 6. 시스템 형상
-![ossp1](https://user-images.githubusercontent.com/62641007/81142308-4d298380-8faa-11ea-8cf2-efdd6f14563e.PNG) 
-![ossp2](https://user-images.githubusercontent.com/62641007/81142314-50247400-8faa-11ea-96e9-c1426baedc3f.PNG)
 
 #### 7. SWOT 분석
 ![캡처](https://user-images.githubusercontent.com/62641007/82196510-bdce8980-9934-11ea-8844-17666c3d1c11.PNG)
-
-#### 8. 진행 계획
-![plan](https://user-images.githubusercontent.com/62641007/82196787-1dc53000-9935-11ea-99bf-d5e61807b668.PNG)
