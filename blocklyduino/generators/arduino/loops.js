@@ -76,7 +76,7 @@ Blockly.Arduino.while_do = function() {
   var statements_name = Blockly.Arduino.statementToCode(this, 'STATNAME');
   var value_name = Blockly.Arduino.valueToCode(this, 'CONDI', Blockly.Arduino.ORDER_ATOMIC)|| 'false';
   // TODO: Assemble JavaScript into code variable.
-  var code = 'do {\n'+statements_name+'} while ('+value_name+');';
+  var code = '\ndo {\n'+statements_name+'} while ('+value_name+');';
   return code;
 };
 
@@ -84,7 +84,7 @@ Blockly.Arduino.do_while = function() {
   var statements_name = Blockly.Arduino.statementToCode(this, 'STATNAME');
   var value_name = Blockly.Arduino.valueToCode(this, 'CONDI', Blockly.Arduino.ORDER_ATOMIC)|| 'false';
   // TODO: Assemble JavaScript into code variable.
-  var code = 'while ('+value_name+'){\n'+statements_name+'\n}';
+  var code = '\nwhile ('+value_name+'){\n'+statements_name+'\n}';
   return code;
 };
 
