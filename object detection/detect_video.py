@@ -1,4 +1,5 @@
 import time
+import serial
 from absl import app, flags, logging
 from absl.flags import FLAGS
 #Tensorflow 에서 제공하는 flags 객체를 사용하면 고정값으로 되어 있는 기본적인 데이터를 편리하게 사용 가능
@@ -94,11 +95,11 @@ def main(_argv):
         #'output'은 윈도우 창의 제목을 의미하며 img는 cv2.imread() 의 return값 
         if cv2.waitKey(1) == ord('q'):#q 입력 시 종료
             break
-        arduino= serial.Serial('COM3', 9600)
-        for i in range(4):
-            c = obj[i]
-            c=c.encode('utf-8')
-            arduino.write(c)
+        #arduino= serial.Serial('COM3', 9600)
+        #for i in range(4):
+        #    c = obj[i]
+        #    c=c.encode('utf-8')
+        #   arduino.write(c)
             
     cv2.destroyAllWindows()
     #화면에 나타난 윈도우를 종료
