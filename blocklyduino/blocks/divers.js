@@ -65,8 +65,6 @@ Blockly.Blocks['grove_motor_shield'] = { //모터 작동 속도와 방향 제어
     this.setColour(150); //블록 색상
     this.appendDummyInput() 
         .appendField(Blockly.Msg.VAR_Motor) // 모터 값 초기화
-        .appendField(new Blockly.FieldImage("http://www.seeedstudio.com/wiki/images/thumb/4/4d/Smotoshield2.jpg/400px-Smotoshield2.jpg", 64, 64))
-        //motor 블록 dropdown 메뉴 (stop, forward, right, left, backward)
         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.Stop, "stop"], [Blockly.Msg.Forward, "forward"], [Blockly.Msg.Right, "right"], [Blockly.Msg.Left, "left"], [Blockly.Msg.Backward, "backward"]]), "DIRECTION");
     this.appendValueInput("SPEED", 'Number') 
         .setCheck('Number')
