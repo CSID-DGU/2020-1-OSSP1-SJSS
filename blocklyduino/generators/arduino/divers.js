@@ -29,7 +29,7 @@ Blockly.Arduino['grove_ultrasonic_ranger'] = function(block) {
         '   long duration, distance;\n'+
         '   digitalWrite(A0,LOW);\n'+
         '   delayMicroseconds(2);\n'+
-        '   digitalWrite(A0, HIGH);'+
+        '   digitalWrite(A0, HIGH);\n'+
         '   delayMicroseconds(10);\n'+
         '   digitalWrite(A0, LOW);\n'+
         '   duration = pulseIn(A5, HIGH);\n'+
