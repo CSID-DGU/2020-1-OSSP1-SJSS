@@ -94,7 +94,12 @@ def main(_argv):
         #'output'은 윈도우 창의 제목을 의미하며 img는 cv2.imread() 의 return값 
         if cv2.waitKey(1) == ord('q'):#q 입력 시 종료
             break
-
+        arduino= serial.Serial('COM3', 9600)
+        for i in range(4):
+            c = obj[i]
+            c=c.encode('utf-8')
+            arduino.write(c)
+            
     cv2.destroyAllWindows()
     #화면에 나타난 윈도우를 종료
 
