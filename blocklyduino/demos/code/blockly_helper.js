@@ -101,7 +101,7 @@ function saveCode() {
 function save() {
   var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
   var data = Blockly.Xml.domToText(xml);
-  var fileName = window.prompt('What would you like to name your file?', 'BlocklyDuino');
+  var fileName = window.prompt('What would you like to name your file?', 'OBLOCK');
   // Store data in blob.
   // var builder = new BlobBuilder();
   // builder.append(data);
