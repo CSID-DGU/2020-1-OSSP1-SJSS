@@ -75,6 +75,7 @@ object detection 라이브러리를 추가한 웹 아두이노 블록 코딩 설
 - mblock
 
 #### 6. 시스템 형상
+![image](https://user-images.githubusercontent.com/59370701/85070280-7f0c4780-b1f0-11ea-877b-bc2fad2c25b3.png)
 
 #### 7. SWOT 분석
 ![캡처](https://user-images.githubusercontent.com/62641007/82196510-bdce8980-9934-11ea-8844-17666c3d1c11.PNG)
