@@ -22,7 +22,6 @@ Blockly.Arduino['lists_create_empty'] = function(block) {
 
 Blockly.Arduino['lists_create_object'] = function(block) {
   var code='object()'; //배열을 리턴해주는 함수 
-  Blockly.Arduino.definitions_['variables'+varName] = dropdown_type + '  ' + varName  ;
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
